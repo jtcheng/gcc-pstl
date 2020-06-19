@@ -1,4 +1,6 @@
-## Build the pstl docker image
+从 `C++17` 开始并行 `STL` 就是标准库的一部分了，但是到目前为止，三大编译器中只有 `MSVC` 实现了并行 `STL`，`GCC` 配合因特尔的 `TBB` 也是可以工作的。为了方便集成与测试，我这里做了个 `pstl` 的 `docker` 镜像。
+
+## 1. Build the pstl docker image
 
 ```bash
 $ git clone https://github.com/jtcheng/gcc-pstl.git
@@ -8,7 +10,7 @@ $ make
 $ make clean
 ```
 
-## Startup the pstl docker container
+## 2. Start a pstl docker container
 
 ```bash
 $ cat pstl.sh
@@ -25,7 +27,7 @@ docker run -it --rm -h pstl -v $LOCAL_SRC_ROOT:$CPSTL_SRC_ROOT -w $CPSTL_SRC_ROO
 $ ./pstl.sh
 ```
 
-## Test the pstl
+## 3. Test gcc with tbb to support pstl
 
 ```bash
 root@pstl:~/src# cat pstl_test.cpp
